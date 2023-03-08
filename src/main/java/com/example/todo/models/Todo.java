@@ -18,7 +18,7 @@ import lombok.Setter;
 @Table(schema = "public")
 public class Todo {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String todoItem;
 
