@@ -33,5 +33,18 @@ public class TodoController {
             return null;
         }
     }
+    @DeleteMapping("/todo/{id}")
+    public Iterable<Todo> deleteTodo(@PathVariable long id){
+        Todo newTodos = todoRepo.findById(id).get();
+        todoRepo.delete(newTodos);
+        return todoRepo.findAll();
+    }
 
+    @PatchMapping("/todo/{id}")
+    public Iterable<Todo> updateTodoItem(@PathVariable long id, @RequestBody String todoItem){
+        Todo newTodo = todoRepo.findById(id).get();
+        newTodo.setTodoItem(todoItem);
+        todoRepo.save(newTodo);
+        return todoRepo.findAll();
+    }
 }
